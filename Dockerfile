@@ -1,18 +1,17 @@
 FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
 
-# System dependencies
-RUN apt-get update && apt-get install -y \
-	git wget unzip ffmpeg libsm6 libxext6 \
-	&& rm -rf /var/lib/apt/lists/*
+RUN mkdir src
+WORKDIR src/
+COPY . .
 
-# Create workspace
-WORKDIR /workspace
+RUN pip3 install -r requirements.txt
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN jupyter serverextension enable --py jupyter_http_over_ws
 
-# Set Jupyter defaults
-EXPOSE 8888
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+WORKDIR /src
+
+#'*'
+CMD [ "jupyter", "notebook","--ip=0.0.0.0","--no-browser","--NotebookApp.allow_remote_access=True","--allow-root",\
+        "--NotebookApp.allow_origin='https://colab.research.google.com'", \
+        "--port=8888", "--NotebookApp.port_retries=0"]
 

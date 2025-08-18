@@ -7,6 +7,6 @@ docker run \
     --net host \
     -p 8888:8888 \
     --runtime nvidia \
-    -v /home/chris/Documents/Uni/CV/Project/Dental-XRay:/workspace \
+    -v /home/chris/Documents/Uni/CV/Project/Dental_X-Ray_Generation:/workspace \
     dental-xray-gan-seg:latest
 
