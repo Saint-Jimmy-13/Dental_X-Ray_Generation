@@ -1,0 +1,31 @@
+# Core deep learning
+torch
+torchvision
+torchaudio
+
+# GANs and image-to-image translation
+pytorch-lightning
+torchmetrics
+lpips				# perceptual loss for GANs
+albumentations		# advanced augmentations
+
+# Segmentation models
+ultralytics			# YOLOv8 for segmentation
+segmentation-models-pytorch	# U-net, FPN, DeepLab, etc.
+
+# Transformers for segmentation (TransUNet, etc.)
+timm
+einops
+
+# General utilities
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+tqdm
+opencv-python
+
+# Jupyter support
+jupyter
+
