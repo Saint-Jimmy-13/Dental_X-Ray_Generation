@@ -7,7 +7,7 @@ RUN mkdir src
 # Set working directory
 WORKDIR src/
 
-# Copy everything into /workspace/src (excluding .dockerignore items)
+# Copy everything into /src (excluding .dockerignore items)
 COPY . .
 
 # Install Python packages
@@ -30,4 +30,3 @@ CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", \
 	"--allow-root", \
     "--NotebookApp.allow_origin='https://colab.research.google.com'", \
     "--port=8888", "--NotebookApp.port_retries=0"]
-
