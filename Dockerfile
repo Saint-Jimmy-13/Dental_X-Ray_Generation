@@ -10,6 +10,9 @@ WORKDIR src/
 # Copy everything into /src (excluding .dockerignore items)
 COPY . .
 
+# Install the cv2 dependencies 
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
+
 # Install Python packages
 RUN pip install --no-cache-dir \
 	notebook==6.5.4 \
