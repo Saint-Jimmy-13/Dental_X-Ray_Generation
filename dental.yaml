@@ -6,12 +6,12 @@ test: images/test
 
 nc: 32
 names: [
-    "tooth1", "tooth2", "tooth3", "tooth4",
-    "tooth5", "tooth6", "tooth7", "tooth8",
-    "tooth9", "tooth10", "tooth11", "tooth12",
-    "tooth13", "tooth14", "tooth15", "tooth16",
-    "tooth17", "tooth18", "tooth19", "tooth20",
-    "tooth21", "tooth22", "tooth23", "tooth24",
-    "tooth25", "tooth26", "tooth27", "tooth28",
-    "tooth29", "tooth30", "tooth31", "tooth32"]
+    "1", "2", "3", "4",
+    "5", "6", "7", "8",
+    "9", "10", "11", "12",
+    "13", "14", "15", "16",
+    "17", "18", "19", "20",
+    "21", "22", "23", "24",
+    "25", "26", "27", "28",
+    "29", "30", "31", "32"]
 
