@@ -1,6 +1,7 @@
 /teeth_seg_dataset
 /yolo_teeth_dataset
 /runs
+/samples
 
 *.pth
 *.pt
