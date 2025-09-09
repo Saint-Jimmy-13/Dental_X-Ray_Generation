@@ -1,17 +1,44 @@
-path: ../workspace/yolo_teeth_dataset
+path: yolo_teeth_dataset
 
 train: images/train
 val: images/val
 test: images/test
 
-nc: 33
-names: [
-    "0", "1", "2", "3", "4",
-    "5", "6", "7", "8", "9", 
-    "10", "11", "12", "13",
-    "14", "15", "16", "17",
-    "18", "19", "20", "21",
-    "22", "23", "24", "25",
-    "26", "27", "28", "29",
-    "30", "31", "32"]
+task: segment
+
+nc: 32
+
+names:
+  - tooth_01
+  - tooth_02
+  - tooth_03
+  - tooth_04
+  - tooth_05
+  - tooth_06
+  - tooth_07
+  - tooth_08
+  - tooth_09
+  - tooth_10
+  - tooth_11
+  - tooth_12
+  - tooth_13
+  - tooth_14
+  - tooth_15
+  - tooth_16
+  - tooth_17
+  - tooth_18
+  - tooth_19
+  - tooth_20
+  - tooth_21
+  - tooth_22
+  - tooth_23
+  - tooth_24
+  - tooth_25
+  - tooth_26
+  - tooth_27
+  - tooth_28
+  - tooth_29
+  - tooth_30
+  - tooth_31
+  - tooth_32
 

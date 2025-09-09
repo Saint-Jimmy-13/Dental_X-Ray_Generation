@@ -1,6 +1,6 @@
 # Core deep learning
 torch
-torchvision
+torchvision==0.23
 torchaudio
 
 # GANs and image-to-image translation
