@@ -10,6 +10,6 @@ docker run \
     --net host \
     --ipc=host \
     --user $(id -u):$(id -g) \
-    -v /home/chris/Documents/Uni/CV/ProjectV2/Dental_X-Ray_Generation:/workspace \
+    -v /home/chris/Documents/Uni/CV/Project/Dental_X-Ray_Generation:/workspace \
     dental-xray-gan-seg:latest
 
