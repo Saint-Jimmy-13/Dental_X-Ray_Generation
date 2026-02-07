@@ -3,6 +3,10 @@
 /synth_p2p
 /runs
 /samples
+/checkpoints
+/datasets
+/metrics
+/results
 
 *.pth
 *.pt

@@ -1,35 +1,43 @@
-# Base image: PyTorch + Jupyter + CUDA
+# PyTorch + CUDA + Jupyter + YOLO environment
+
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
-# Create necessary folders
-RUN mkdir src
+# Build arguments for user permissions
+ARG UID=1000
+ARG GID=1000
 
-# Set working directory
+# Install system dependencies (including headless OpenCV)
+RUN apt-get update && apt-get install -y \
+    libsm6 \
+    libxext6 \
+    ffmpeg \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create workspace directory
 WORKDIR src/
 
-# Copy everything into /src (excluding .dockerignore items)
-COPY . .
-
-# Install the cv2 dependencies 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
-
-# Install Python packages
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir \
-	notebook==6.5.4 \
-	jupyter_http_over_ws \
-	-r requirements.txt
+    notebook==7.0.6 \
+    jupyter_http_over_ws \
+    -r requirements.txt
 
-# Enable Jupyter over WebSockets
-# Manually configure WebSocket permissions for Colab
+# Configure Jupyter for Colab access
 RUN mkdir -p ~/.jupyter && \
     echo "c.NotebookApp.allow_origin = 'https://colab.research.google.com'" >> ~/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.allow_remote_access = True" >> ~/.jupyter/jupyter_notebook_config.py
+    
+# Copy project files
+COPY . .
 
-WORKDIR /src
+# Default command: Launch Jupyter
+CMD ["jupyter", "notebook", \
+     "--ip=0.0.0.0", \
+     "--port=8888", \
+     "--no-browser", \
+     "--allow-root", \
+     "--NotebookApp.allow_remote_access=True", \
+     "--NotebookApp.allow_origin=https://colab.research.google.com"]
 
-# Default command for launching Jupyter in Colab
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", \
-	"--NotebookApp.allow_remote_access=True", \
-	"--allow-root", \
-    "--NotebookApp.allow_origin='https://colab.research.google.com'", \
-    "--port=8888", "--NotebookApp.port_retries=0"]

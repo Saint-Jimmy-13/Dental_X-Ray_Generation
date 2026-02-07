@@ -1,31 +1,35 @@
 # Core deep learning
-torch
-torchvision==0.23
-torchaudio
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
 
-# GANs and image-to-image translation
-pytorch-lightning
-torchmetrics
-lpips				# perceptual loss for GANs
-albumentations		# advanced augmentations
+# Computer Vision & YOLO
+ultralytics==8.2.27
+opencv-python-headless==4.8.0.76
 
-# Segmentation models
-ultralytics			# YOLOv8 for segmentation
-segmentation-models-pytorch	# U-net, FPN, DeepLab, etc.
+# Data & Numerical
+numpy==1.24.3
+scipy==1.11.3
+scikit-learn==1.3.2
+pandas==2.1.1
 
-# Transformers for segmentation (TransUNet, etc.)
-timm
-einops
+# Image Processing
+Pillow==10.0.1
+scikit-image==0.22.0
 
-# General utilities
-numpy
-pandas
-scikit-learn
-matplotlib
-seaborn
-tqdm
-opencv-python
+# Data Format
+PyYAML==6.0.1
+pyyaml==6.0.1
 
-# Jupyter support
-jupyter
+# Visualization & Plotting
+matplotlib==3.8.0
+seaborn==0.13.0
+
+# Progress & Logging
+tqdm==4.66.1
+
+# Development (optional)
+jupyter==1.0.0
+ipython==8.16.0
+ipykernel==6.25.2
 
