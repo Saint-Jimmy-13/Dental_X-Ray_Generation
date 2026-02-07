@@ -1,7 +1,7 @@
-# Core deep learning
-torch==2.1.0
-torchvision==0.16.0
-torchaudio==2.1.0
+# Core DL (Handled by Docker Base Image - do not overwrite)
+# torch
+# torchvision
+# torchaudio
 
 # Computer Vision & YOLO
 ultralytics==8.2.27
@@ -19,7 +19,6 @@ scikit-image==0.22.0
 
 # Data Format
 PyYAML==6.0.1
-pyyaml==6.0.1
 
 # Visualization & Plotting
 matplotlib==3.8.0
@@ -28,8 +27,7 @@ seaborn==0.13.0
 # Progress & Logging
 tqdm==4.66.1
 
-# Development (optional)
+# Development
 jupyter==1.0.0
-ipython==8.16.0
-ipykernel==6.25.2
+# Note: jupyter_http_over_ws is installed directly in Dockerfile
 
