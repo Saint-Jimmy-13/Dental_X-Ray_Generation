@@ -30,4 +30,5 @@ tqdm==4.66.1
 # Development
 jupyter==1.0.0
 # Note: jupyter_http_over_ws is installed directly in Dockerfile
+tornado==6.1
 
