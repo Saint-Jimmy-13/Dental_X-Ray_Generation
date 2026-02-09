@@ -4,6 +4,7 @@
 /synthetic_dataset
 /teeth_seg_dataset
 /yolo_real
+/wgan_dataset
 
 *.pth
 *.pt
