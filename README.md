@@ -20,7 +20,7 @@ The dataset consists of 598 paired images and segmentation masks.
 ### 1. Generative Model (Pix2Pix)
 We utilized a conditional GAN framework to translate segmentation masks into realistic X-rays.
 * **Generator:** **U-Net** architecture. Our ablation studies proved that **Skip Connections** are mandatory for medical imaging to preserve high-frequency anatomical edges.
-* **Discriminator:** **PatchGAN** ($70 \times 70$ receptive field) to force local textural realism.
+* **Discriminator:** **PatchGAN** to force local textural realism.
 * **Loss Function:** Adversarial Loss + $L_1$ Reconstruction Loss.
 
 ### 2. Post-Processing Analysis
