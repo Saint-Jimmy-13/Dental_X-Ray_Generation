@@ -42,6 +42,7 @@ Raw GAN outputs often contain high-frequency "checkerboard" artifacts. We conduc
 
 ```bash
 # Clone the repository
-git clone [https://github.com/Saint-Jimmy-13/Dental_X-Ray_Generation.git](https://github.com/Saint-Jimmy-13/Dental_X-Ray_Generation.git)
+git clone https://github.com/Saint-Jimmy-13/Dental_X-Ray_Generation.git
+
 pip install -r requirements.txt
 
