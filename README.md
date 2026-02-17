@@ -1,9 +1,47 @@
 # Synthetic Dental X-Ray Generation and Segmentation Analysis
 
-#### **Abstract**: Medical image analysis faces challenges like data scarcity, privacy restrictions, and ethical concerns. In dental radiology, obtaining diverse ortopanoramic X-ray (OPT) datasets is particularly difficult due to patient data sensitivity. This project trains a Generative Adversarial Network (GAN) to synthesize realistic OPT images and evaluates their effectiveness by training a CNN-based segmentation model on a public dental dataset. The final phase tests the segmentation model on both real and synthetic images to assess performance gaps, biases, and the usability of GAN-generated data in medical imaging.
+## 📄 Abstract
+Medical image analysis faces critical challenges regarding data scarcity, privacy restrictions, and ethical concerns. In dental radiology, obtaining diverse Orthopantomogram (OPT) datasets is particularly difficult due to strict patient data sensitivity.
 
-###### **Dataset**: Public dental X-ray segmentation dataset (Teeth Segmentation)
-Teeth Segmentation on dental X-ray images (https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images/data)
+This project addresses this bottleneck by implementing a **Generative Adversarial Network (GAN)** pipeline to synthesize realistic, privacy-compliant dental X-rays. We further validate the clinical utility of this synthetic data by training a **YOLOv8 segmentation model**. Our final experiments demonstrate that using GAN-generated images as data augmentation **improves segmentation performance on real patients**, effectively bridging the gap between data scarcity and model robustness.
 
-###### **Task**: This project has two primary objectives: (1) developing a GAN model to generate synthetic ortopanoramic dental X-ray images, and (2) training and evaluating a YOLO-based segmentation model on real and synthetic datasets. The main focus is to assess how well a segmentation model trained on real data generalizes to synthetic images and to identify its potential limitations. The students will experiment with different GAN architectures and training strategies to improve the realism of the generated images. They will also analyze segmentation performance differences when applying CNN models to real vs. synthetic X-rays.
+---
+
+## 💾 Dataset & Preprocessing
+**Source:** [Teeth Segmentation on Dental X-ray Images (Kaggle)](https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images/data)
+
+The dataset consists of 598 paired images and segmentation masks.
+* **Engineering Contribution:** The original annotations were provided as raw JSON vectors. We implemented a **custom parser** to convert these vectors into **YOLO Format** (Bounding boxes and polygons for the segmentation model).
+
+---
+
+## ⚙️ Methodology & Architecture
+
+### 1. Generative Model (Pix2Pix)
+We utilized a conditional GAN framework to translate segmentation masks into realistic X-rays.
+* **Generator:** **U-Net** architecture. Our ablation studies proved that **Skip Connections** are mandatory for medical imaging to preserve high-frequency anatomical edges.
+* **Discriminator:** **PatchGAN** ($70 \times 70$ receptive field) to force local textural realism.
+* **Loss Function:** Adversarial Loss + $L_1$ Reconstruction Loss.
+
+### 2. Post-Processing Analysis
+Raw GAN outputs often contain high-frequency "checkerboard" artifacts. We conducted a comparative study to enhance realism:
+* ❌ **Sharpening (Unsharp Masking):** Failed. It amplified artifacts, causing segmentation performance to drop significantly.
+* ✅ **Denoising (Median Filter):** Succeeded. It smoothed out synthetic grain while preserving tooth structures, restoring segmentation accuracy.
+
+### 3. Segmentation Model (YOLOv8)
+* **Model:** YOLOv8-Nano.
+* **Strategy:** We tested **Real-Only**, **Synthetic-Only**, and **Mixed-Training** strategies to measure the Domain Gap and the efficacy of Data Augmentation.
+
+---
+
+## 🚀 Usage
+
+### Prerequisites
+* Python 3.10+
+* NVIDIA GPU (Recommended: RTX 2060 or higher)
+
+```bash
+# Clone the repository
+git clone [https://github.com/Saint-Jimmy-13/Dental_X-Ray_Generation.git](https://github.com/Saint-Jimmy-13/Dental_X-Ray_Generation.git)
+pip install -r requirements.txt
 
